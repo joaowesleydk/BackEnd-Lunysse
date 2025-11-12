@@ -1,25 +1,51 @@
-from fastapi import FastAPI, Depends
-from dotenv import load_dotenv
 import os
-from sqlalchemy import text
-from sqlalchemy.orm import Session
-from core.database import get_db
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+from models import models
+from core.database import engine, Base
+from routers import auth, patients, psychologists, appointments, requests, ml_analysis, reports  # todos os routers
  
+# Carrega variáveis de ambiente
 load_dotenv()
-app = FastAPI(
-    title=os.getenv("APP_NAME"),
-    version=os.getenv("APP_VERSION"),
-)
-@app.get("/")
-def read_root():
-    return{"message": "Bem-Vindo a API LYRA"}
  
-@app.get("/test-db")
-def test_database_connection(db: Session = Depends(get_db)):
-    try:
-        db.execute(text("Select 1 "))
-        return {"Status": "sucess", "message": "conexao com banco de dados ok"}
-    except Exception as error:
-        return{"Status": "error", "message": f"Falha na conexao: {error}"}
-   
+# Cria as tabelas no banco de dados
+Base.metadata.create_all(bind=engine)
+ 
+app = FastAPI(
+    title="Lunysse API",
+    description="API para sistema de agendamento psicológico",
+    version="1.0.0"
+)
+ 
+# Configuração CORS mais segura
+cors_origins = os.getenv("CORS_ORIGINS", "http://localhost:3000").split(",")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=cors_origins,
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
+    allow_headers=["*"],
+)
+ 
+# Inclui os routers (rotas principais da API)
+app.include_router(auth.router)
+app.include_router(patients.router)
+app.include_router(psychologists.router)
+app.include_router(appointments.router)
+app.include_router(requests.router)
+app.include_router(ml_analysis.router)
+app.include_router(reports.router)
+ 
+ 
+ 
+# Rotas básicas de teste e status
+@app.get("/")
+async def root():
+    return {"message": "Lunysse API - Sistema de Agendamento Psicológico"}
+ 
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy"}
+ 
  
