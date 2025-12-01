@@ -1,230 +1,364 @@
-# 🧠 Lunysse API — Sistema de Agendamento Psicológico
+# 🏥 Lunysse FastAPI - Sistema de Agendamento Psicológico
 
-![Python](https://img.shields.io/badge/Python-3.11+-blue?logo=python)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-brightgreen?logo=fastapi)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15+-blue?logo=postgresql)
-![SQLAlchemy](https://img.shields.io/badge/ORM-SQLAlchemy-orange?logo=databricks)
-![License](https://img.shields.io/badge/license-MIT-lightgrey)
+**Projeto Integrador - Curso Desenvolvimento de Sistemas com Machine Learning**  
+**SENAC - 96 horas | Docente: Jeremias de Oliveira Nunes**
 
-> **Lunysse API** é o backend de um sistema completo de **gestão e agendamento psicológico**, com autenticação JWT, relatórios dinâmicos, integração com análise preditiva de risco (ML) e suporte multiusuário para psicólogos e pacientes.
+API REST completa desenvolvida em FastAPI para sistema de agendamento psicológico com análise inteligente de risco de pacientes usando Machine Learning personalizado.
 
----
+## 🎓 Sobre o Projeto Pedagógico
 
-## 📑 Sumário
+Este projeto foi desenvolvido como **Projeto Integrador** do curso "Desenvolvimento de Sistemas com Machine Learning" seguindo metodologia de **Aprendizagem Baseada em Projetos**. O sistema representa um caso real de aplicação de tecnologias modernas em saúde mental.
 
-1. [📘 Visão Geral](#-visão-geral)
-2. [🎯 Objetivos do Projeto](#-objetivos-do-projeto)
-3. [🚀 Principais Funcionalidades](#-principais-funcionalidades)
-4. [🛠️ Tecnologias Utilizadas](#-tecnologias-utilizadas)
-5. [📂 Estrutura do Projeto](#-estrutura-do-projeto)
-6. [⚙️ Instalação e Execução](#️-instalação-e-execução)
-7. [🌍 Variáveis de Ambiente (.env)](#-variáveis-de-ambiente-env)
-8. [🧭 Endpoints Principais](#-endpoints-principais)
-9. [🔐 Segurança e Autenticação](#-segurança-e-autenticação)
-10. [📊 Relatórios e Machine Learning](#-relatórios-e-machine-learning)
-11. [🧪 Testes Automatizados](#-testes-automatizados)
-12. [🧱 Boas Práticas e Segurança](#-boas-práticas-e-segurança)
-13. [📄 Licença](#-licença)
-14. [👨‍💻 Autor e Contato](#-autor-e-contato)
+### 📚 Material Pedagógico Completo
 
----
+#### **UC 02 - Desenvolvimento do Sistema Base (60h)**
+Todos os **15 planos de aula** detalhados estão disponíveis em: `Arquivos do curso/Plano de aula/UC 02/`
 
-## 📘 Visão Geral
+- **Aula 01-04**: Fundação (Estrutura, Banco, Modelos)
+- **Aula 05-07**: Segurança (Schemas, Utils, Autenticação)
+- **Aula 08-10**: Funcionalidades (CRUD, Agendamentos, Solicitações)
+- **Aula 11-12**: Inteligência (Relatórios, Machine Learning)
+- **Aula 13-15**: Qualidade (Testes, Documentação, Deploy)
 
-O **Lunysse Backend** foi desenvolvido para fornecer a base sólida de uma aplicação moderna para **clínicas psicológicas**, permitindo que **psicólogos e pacientes** realizem:
+#### **UC 03 - Serviços Web Avançados (36h)**
+Todos os **9 planos de aula** detalhados estão disponíveis em: `Arquivos do curso/Plano de aula/UC03/`
 
-- 📅 Agendamento e acompanhamento de consultas  
-- 👩‍⚕️ Cadastro e autenticação de psicólogos  
-- 🧍‍♀️ Gerenciamento de pacientes e histórico clínico  
-- 📊 Geração de relatórios e estatísticas personalizadas  
-- 🤖 Análise preditiva de risco emocional (via módulo de ML)
+- **Aula 01**: Revisão e Versionamento da API
+- **Aula 02**: Integração com APIs Externas (ViaCEP)
+- **Aula 03**: Sistema de Notificações (SendGrid)
+- **Aula 04**: Frontend Web Consumidor
+- **Aula 05**: Cache Distribuído (Redis)
+- **Aula 06**: Microserviços de Relatórios
+- **Aula 07**: Testes de Integração End-to-End
+- **Aula 08**: Monitoramento e Observabilidade
+- **Aula 09**: Deploy e CI/CD Pipeline
 
----
+## 🚀 Funcionalidades
 
-## 🎯 Objetivos do Projeto
+### **Sistema Base (UC 02)**
+- **Autenticação JWT** - Login e registro de usuários
+- **Gerenciamento de Agendamentos** - Criar, listar, atualizar e cancelar sessões
+- **Gestão de Pacientes** - Cadastro e acompanhamento de pacientes
+- **Solicitações** - Sistema de pedidos de novos pacientes
+- **Relatórios** - Estatísticas e análises para psicólogos
+- **Psicólogos** - Listagem de profissionais disponíveis
+- **🤖 Machine Learning** - Análise de risco de pacientes baseada em frequência
 
-- Automatizar o processo de **agendamento psicológico** com segurança e praticidade.  
-- Fornecer **relatórios inteligentes** para acompanhamento de desempenho clínico.  
-- Integrar um **módulo de Machine Learning** para análise de risco emocional.  
-- Garantir **segurança de dados sensíveis** e conformidade com boas práticas de API REST.  
+### **Serviços Web Avançados (UC 03)**
+- **🔄 Versionamento de API** - Suporte a múltiplas versões (v1, v2)
+- **🌐 Integração Externa** - ViaCEP para endereços automáticos
+- **📧 Notificações** - Sistema de emails com SendGrid
+- **💻 Frontend Web** - SPA responsiva consumindo a API
+- **⚡ Cache Distribuído** - Redis para otimização de performance
+- **📊 Microserviços** - Relatórios independentes com PDFs/Excel
+- **🧪 Testes Avançados** - Integração e end-to-end completos
+- **📈 Observabilidade** - Monitoramento com Prometheus/Grafana
+- **🚀 CI/CD** - Deploy automatizado em produção
 
----
+## 📦 Estrutura do Projeto
 
-## 🚀 Principais Funcionalidades
+```
+lunysse-fastapi/
+├── app/                     # 🏗️ Aplicação principal
+│   ├── main.py              # Ponto de entrada FastAPI
+│   ├── database.py          # Configuração SQLite + SQLAlchemy
+│   ├── utils.py             # Funções auxiliares (JWT, bcrypt, idade)
+│   ├── config.py            # Configurações e variáveis de ambiente
+│   ├── validators.py        # Validadores personalizados
+│   ├── logging_config.py    # Configuração de logs
+│   ├── routers/             # 🛣️ Rotas da API
+│   │   ├── auth.py          # Autenticação (login/register)
+│   │   ├── appointments.py  # Sistema de agendamentos
+│   │   ├── patients.py      # Gestão de pacientes
+│   │   ├── psychologists.py # Listagem de profissionais
+│   │   ├── requests.py      # Solicitações de novos pacientes
+│   │   ├── reports.py       # Relatórios e estatísticas
+│   │   └── ml_analysis.py   # 🤖 Análise ML de risco
+│   ├── models/              # 🗄️ Modelos SQLAlchemy
+│   │   └── models.py        # Definições das tabelas e relacionamentos
+│   ├── schemas/             # ✅ Schemas Pydantic
+│   │   └── schemas.py       # Validação e serialização de dados
+│   └── services/            # 🔧 Lógica de negócio
+│       ├── auth_service.py  # Serviços de autenticação
+│       ├── report_service.py# Geração de relatórios
+│       └── ml_service.py    # 🧠 Algoritmos de Machine Learning
+├── Arquivos do curso/       # 📚 Material pedagógico
+│   ├── Plano de Trabalho Docente/  # PTDs das UCs
+│   ├── Plano de aula/       # Planos de aula organizados
+│   │   ├── UC 02/           # 15 aulas - Sistema base (60h)
+│   │   └── UC03/            # 9 aulas - Serviços web (36h)
+│   └── Modelos de documentos/
+├── logs/                    # 📝 Arquivos de log
+├── .env                     # 🔐 Variáveis de ambiente
+├── requirements.txt         # 📦 Dependências Python
+├── seed_data.py            # 🌱 Dados de teste
+├── test_api.py             # 🧪 Testes de API
+├── test_ml.py              # 🧪 Testes de Machine Learning
+├── run.py                  # 🚀 Script de execução
+├── README.md               # 📖 Documentação principal
+└── DOCUMENTACAO-BACKEND.md # 📋 Documentação técnica detalhada
+```
 
-✅ Autenticação com **JWT**  
-✅ Hash seguro de senhas com **bcrypt (Passlib)**  
-✅ Sistema completo de **CRUD** (pacientes, psicólogos, agendamentos)  
-✅ **Agendamento inteligente** com status dinâmico  
-✅ **Relatórios com métricas de desempenho e risco**  
-✅ **Integração com módulo de Machine Learning**  
-✅ **Middleware de CORS configurável**  
-✅ Estrutura modular e escalável  
+## 🛠️ Instalação e Execução
 
----
-
-## 🛠️ Tecnologias Utilizadas
-
-| Categoria | Tecnologia |
-|------------|-------------|
-| Linguagem | **Python 3.11+** |
-| Framework Web | **FastAPI** |
-| ORM / Banco | **SQLAlchemy + PostgreSQL / SQLite** |
-| Autenticação | **JWT (Python-JOSE)** |
-| Segurança | **Passlib (bcrypt)** |
-| Variáveis de Ambiente | **Python-dotenv** |
-| ML e Relatórios | **Pandas / Custom ML Services** |
-| Documentação | **Swagger UI / ReDoc** |
-| Testes | **Pytest** |
-
----
-
-## 📂 Estrutura do Projeto
-
+### 1. Instalar dependências
 ```bash
-📦 Lunysse-API/    
-│
-├── main.py                     # Ponto de entrada da aplicação FastAPI
-│
-├── core/
-│   ├── database.py              # Configuração do banco e sessão
-│   └── security.py              # Autenticação, JWT, senhas
-│
-├── models/
-│   └── models.py                # Modelos ORM (SQLAlchemy)
-│
-├── schemas/
-│   └── schemas.py               # Schemas Pydantic (validação e resposta)
-│
-├── routers/
-│   ├── auth.py                  # Autenticação e login
-│   ├── patients.py              # Rotas de pacientes
-│   ├── psychologists.py         # Rotas de psicólogos
-│   ├── appointments.py          # Agendamentos
-│   ├── reports.py               # Relatórios e estatísticas
-│   ├── ml_analysis.py           # Análises preditivas (ML)
-│   └── requests.py              # Requisições auxiliares
-│
-├── services/
-│   ├── ml_services.py           # Serviços de Machine Learning
-│   └── report_services.py       # Geração de relatórios dinâmicos
-│
-├── tests/                       # Testes automatizados (Pytest)
-│   ├── test_auth.py
-│   ├── test_patients.py
-│   └── test_appointments.py
-│
-├── .env                         # Variáveis de ambiente
-├── requirements.txt              # Dependências do projeto
-└── README.md                     # Documentação principal
-````
-```bash
-Instalação e Execução
-1️⃣ Clone o repositório
-git clone https://github.com/seu-usuario/lunysse-backend.git
-cd lunysse-backend
-
-2️⃣ Crie e ative o ambiente virtual
-python -m venv venv
-source venv/bin/activate       # Linux/Mac
-venv\Scripts\activate          # Windows
-
-3️⃣ Instale as dependências
 pip install -r requirements.txt
+```
 
-4️⃣ Configure o arquivo .env
+### 2. Popular banco com dados de teste
+```bash
+python seed_data.py
+```
 
-Crie o arquivo .env na raiz com:
+### 3. Executar a API
+```bash
+uvicorn app.main:app --reload
+```
 
-DATABASE_URL=sqlite:///./lunysse.db
-SECRET_KEY=sua_chave_super_secreta
-ALGORITHM=HS256
-ACCESS_TOKEN_EXPIRE_MINUTES=60
-CORS_ORIGINS=http://localhost:3000
+A API estará disponível em: `http://localhost:8000`
 
-5️⃣ Execute o servidor
-uvicorn main:app --reload
+### 4. Documentação interativa
+- Swagger UI: `http://localhost:8000/docs`
+- ReDoc: `http://localhost:8000/redoc`
 
+## 🔐 Usuários de Teste
 
-Acesse:
+### Psicólogos:
+- **ana@test.com** / 123456 - Dra. Ana Costa (TCC)
+- **carlos@test.com** / 123456 - Dr. Carlos Mendes (Psicologia Infantil)
+- **lucia@test.com** / 123456 - Dra. Lucia Ferreira (Terapia Familiar)
 
-Swagger UI → http://127.0.0.1:8000/docs
+### Paciente:
+- **paciente@test.com** / 123456 - Maria Santos
 
-ReDoc → http://127.0.0.1:8000/redoc
+## 📋 Endpoints Principais
 
-🌍 Variáveis de Ambiente (.env)
-Variável	Descrição	Exemplo
-DATABASE_URL	URL do banco de dados	postgresql://user:pass@localhost:5432/lunysse_db
-SECRET_KEY	Chave secreta para JWT	supersegredo123
-ALGORITHM	Algoritmo de criptografia JWT	HS256
-ACCESS_TOKEN_EXPIRE_MINUTES	Tempo de expiração do token (minutos)	60
-CORS_ORIGINS	Domínios permitidos	http://localhost:3000
-🧭 Endpoints Principais
-Método	Rota	Descrição
-POST	/auth/login	Login e geração de token
-POST	/patients/	Cadastrar novo paciente
-GET	/patients/	Listar pacientes
-POST	/appointments/	Criar agendamento
-GET	/reports/	Gerar relatórios
-GET	/ml/analysis	Executar análise preditiva de risco
-🔐 Segurança e Autenticação
+### Autenticação
+- `POST /auth/login` - Login de usuário
+- `POST /auth/register` - Registro de novo usuário
 
-Arquivo: core/security.py
+### Agendamentos
+- `GET /appointments/` - Listar agendamentos do usuário
+- `POST /appointments/` - Criar novo agendamento
+- `PUT /appointments/{id}` - Atualizar agendamento
+- `DELETE /appointments/{id}` - Cancelar agendamento
+- `GET /appointments/available-slots` - Horários disponíveis
 
-Responsável por:
+### Pacientes
+- `GET /patients/` - Listar pacientes (psicólogos)
+- `POST /patients/` - Cadastrar novo paciente
+- `GET /patients/{id}/sessions` - Sessões do paciente
+- `POST /patients/{id}/notes` - Adicionar anotação
 
-Criptografia de senhas (bcrypt)
+### Solicitações
+- `GET /requests/` - Listar solicitações (psicólogos)
+- `POST /requests/` - Criar nova solicitação
+- `PUT /requests/{id}` - Atualizar status da solicitação
 
-Criação e validação de tokens JWT
+### Relatórios
+- `GET /reports/{psychologist_id}` - Dados para relatórios
 
-Leitura segura de variáveis do .env
+### Machine Learning
+- `GET /ml/risk-analysis` - Análise de risco de todos os pacientes
+- `GET /ml/risk-analysis/{patient_id}` - Análise detalhada de um paciente
 
-Exemplo:
+### Psicólogos
+- `GET /psychologists/` - Listar psicólogos disponíveis
 
-from core.security import create_access_token
+## 🔧 Tecnologias Utilizadas
 
-token = create_access_token({"sub": "user@example.com"})
+### **Stack Principal**
+- **FastAPI** - Framework web moderno e rápido
+- **SQLAlchemy** - ORM para Python
+- **SQLite** - Banco de dados leve
+- **Pydantic** - Validação de dados
+- **JWT** - Autenticação via tokens
+- **Bcrypt** - Hash de senhas
+- **Uvicorn** - Servidor ASGI
+- **NumPy** - Computação científica para ML
 
-📊 Relatórios e Machine Learning
+### **Integrações e Serviços**
+- **ViaCEP API** - Consulta automática de endereços
+- **SendGrid** - Envio profissional de emails
+- **Redis** - Cache distribuído e performance
+- **Prometheus** - Métricas e monitoramento
+- **Grafana** - Dashboards e visualização
+- **GitHub Actions** - CI/CD automatizado
+- **Railway/Heroku** - Deploy em produção
+- **🤖 ML Personalizado** - Algoritmo de análise de risco
 
-Os módulos report_services.py e ml_services.py fornecem:
+## 📊 Status de Agendamentos
 
-📈 Estatísticas de comparecimento
+- `agendado` - Sessão marcada
+- `concluido` - Sessão realizada
+- `cancelado` - Sessão cancelada
+- `reagendado` - Sessão remarcada
 
-🔍 Análise de risco com Machine Learning
+## 🔒 Autenticação
 
-⚠️ Alertas de pacientes com risco emocional elevado
+A API utiliza JWT (JSON Web Tokens) para autenticação. Após o login, inclua o token no header:
 
-Exemplo de resposta JSON:
+```
+Authorization: Bearer <seu_token_jwt>
+```
 
-{
-  "stats": {
-    "active_patients": 14,
-    "total_sessions": 52,
-    "completed_sessions": 38,
-    "attendance_rate": 73.08
-  },
-  "risk_alerts": [
-    { "patient": "Maria", "risk": "Alto", "reason": "Frequência baixa" }
-  ]
-}
+## 🤖 Análise de Machine Learning
 
+### Algoritmo de Risco
+O sistema analisa automaticamente o risco de cada paciente baseado em:
 
+- **Frequência de consultas** - Consultas por mês
+- **Taxa de cancelamento** - % de consultas canceladas
+- **Ausências** - Dias desde última consulta
+- **Tendências** - Padrão de comparecimento recente
+- **Agendamentos futuros** - Presença de consultas marcadas
 
-🧱 Boas Práticas e Segurança
+### Níveis de Risco
+- 🔴 **Alto (70-100)** - Paciente em risco de abandono
+- 🟡 **Moderado (40-69)** - Requer atenção
+- 🟢 **Baixo (0-39)** - Padrão normal
 
-✅ Senhas armazenadas com bcrypt
-✅ Tokens JWT com expiração automática
-✅ Rotas protegidas por autenticação obrigatória
-✅ CORS configurado dinamicamente
-✅ Variáveis sensíveis mantidas no .env
+### Métricas Calculadas
+- Score de risco (0-100)
+- Razão principal do risco
+- Estatísticas de comparecimento
+- Padrões de comportamento
 
-📄 Licença
+## 🚨 Exceções Personalizadas
 
-Projeto licenciado sob a MIT License — você pode usar, modificar e distribuir livremente com atribuição ao autor original.
+A API retorna erros HTTP estruturados:
+- `400` - Bad Request (dados inválidos)
+- `401` - Unauthorized (não autenticado)
+- `403` - Forbidden (sem permissão)
+- `404` - Not Found (recurso não encontrado)
+- `500` - Internal Server Error (erro interno)
 
-👨‍💻 Autor e Contato
+## 🎯 Indicadores Pedagógicos Atendidos
 
-João Wesley Damas Kind
-📧 Email profissional
-💼 GitHub: https://github.com/joaowesleydk
+✅ **Desenvolvimento orientado a objetos** - Aplicado em modelos, serviços e funcionalidades  
+✅ **Uso de SQL para manipulação e relatórios** - SQLAlchemy ORM e consultas complexas  
+✅ **Documentação do projeto web** - README, Swagger UI e documentação técnica  
+✅ **Integração de segurança da informação** - JWT, bcrypt, validações e testes  
+
+## 🏆 Competências Desenvolvidas
+
+### 💻 **Conhecimentos Técnicos**
+- Arquitetura FastAPI profissional
+- SQLAlchemy ORM e modelagem de dados
+- Autenticação JWT e segurança
+- Machine Learning aplicado à saúde
+- Testes automatizados e validações
+
+### 🛠️ **Habilidades Práticas**
+- Estruturar projetos backend completos
+- Implementar APIs RESTful seguras
+- Desenvolver algoritmos de análise de dados
+- Documentar sistemas complexos
+- Trabalhar com versionamento Git
+
+### 🎯 **Atitudes Profissionais**
+- Responsabilidade com dados sensíveis de saúde
+- Colaboração em equipe de desenvolvimento
+- Ética no tratamento de informações médicas
+- Busca por excelência técnica
+- Pensamento sistêmico e analítico
+
+## 📖 Metodologias Ativas Aplicadas
+
+- **Aprendizagem Baseada em Projetos** - Desenvolvimento do sistema completo
+- **Resolução de Problemas** - Desafios reais de consultórios psicológicos
+- **Live Coding** - Implementação colaborativa em tempo real
+- **Programação em Pares** - Desenvolvimento colaborativo
+- **Estudo de Casos** - Cenários reais de uso do sistema
+
+## 🚀 Evolução do Projeto
+
+### **UC 02 - Sistema Base (60h - 15 aulas)**
+
+#### **Fase 1: Fundação (Aulas 1-4)**
+- Estrutura profissional do projeto
+- Configuração de banco de dados
+- Modelagem orientada a objetos
+- Relacionamentos complexos
+
+#### **Fase 2: Segurança (Aulas 5-7)**
+- Validação de dados com Pydantic
+- Funções de segurança (JWT, bcrypt)
+- Sistema de autenticação completo
+
+#### **Fase 3: Funcionalidades (Aulas 8-10)**
+- CRUD completo de pacientes
+- Sistema central de agendamentos
+- Gestão de solicitações e workflows
+
+#### **Fase 4: Inteligência (Aulas 11-12)**
+- Relatórios e estatísticas avançadas
+- Algoritmo ML personalizado para análise de risco
+
+#### **Fase 5: Qualidade (Aulas 13-15)**
+- Testes automatizados completos
+- Documentação técnica profissional
+- Deploy e versionamento
+
+### **UC 03 - Serviços Web Avançados (36h - 9 aulas)**
+
+#### **Fase 1: Evolução e Integração (Aulas 1-3)**
+- Versionamento profissional da API
+- Integração com APIs externas (ViaCEP)
+- Sistema de notificações (SendGrid)
+
+#### **Fase 2: Interface e Performance (Aulas 4-5)**
+- Frontend web consumidor completo
+- Cache distribuído com Redis
+
+#### **Fase 3: Arquitetura Distribuída (Aulas 6-7)**
+- Microserviços de relatórios
+- Testes de integração end-to-end
+
+#### **Fase 4: Produção (Aulas 8-9)**
+- Monitoramento e observabilidade
+- Deploy automatizado com CI/CD
+
+## 📊 Resultados de Aprendizagem
+
+### **UC 02 - Sistema Base**
+- ✅ **Sistema completo** de agendamento psicológico
+- ✅ **Algoritmo ML personalizado** para análise de risco
+- ✅ **Arquitetura profissional** seguindo padrões de mercado
+- ✅ **Documentação completa** para colaboração
+- ✅ **Testes automatizados** para garantia de qualidade
+
+### **UC 03 - Serviços Web Avançados**
+- ✅ **Integração com serviços externos** (ViaCEP, SendGrid)
+- ✅ **Frontend web responsivo** consumindo a API
+- ✅ **Arquitetura de microserviços** escalável
+- ✅ **Cache distribuído** para alta performance
+- ✅ **Monitoramento profissional** em produção
+- ✅ **Deploy automatizado** com CI/CD
+- ✅ **Portfólio completo** pronto para mercado
+
+---
+
+---
+
+## 🎯 **Projeto Pedagógico Completo - 96 Horas**
+
+### **📈 Progressão de Aprendizagem:**
+- **UC 02 (60h):** Desenvolvimento completo do sistema base
+- **UC 03 (36h):** Evolução para serviços web avançados e produção
+
+### **🏆 Competências Desenvolvidas:**
+- Desenvolvimento full-stack profissional
+- Arquitetura de sistemas distribuídos
+- Integração com serviços externos
+- DevOps e operação em produção
+- Machine Learning aplicado à saúde
+
+### **💼 Preparação para o Mercado:**
+- Portfólio completo com sistema em produção
+- Experiência em tecnologias modernas
+- Conhecimento em arquitetura escalável
+- Práticas profissionais de desenvolvimento
+
+**💡 Este projeto demonstra a aplicação prática de tecnologias modernas em um contexto real de saúde mental, preparando desenvolvedores para desafios profissionais com responsabilidade social e excelência técnica.**

@@ -2,10 +2,9 @@ from pydantic import BaseModel, EmailStr
 from datetime import date, datetime
 from typing import Optional, List
 from models.models import UserType, AppointmentStatus, RequestStatus
+from datetime import date as DateType
  
-# ==========================
-# Users
-# ==========================
+# User schemas
 class UserBase(BaseModel):
     email: EmailStr
     name: str
@@ -16,7 +15,7 @@ class UserCreate(UserBase):
     specialty: Optional[str] = None
     crp: Optional[str] = None
     phone: Optional[str] = None
-    birth_date: date
+    birth_date: Optional[date] = None
  
 class UserLogin(BaseModel):
     email: EmailStr
@@ -37,10 +36,7 @@ class Token(BaseModel):
     token_type: str
     user: User
  
- 
-# ==========================
-# Patients
-# ==========================
+# Patient schemas
 class PatientBase(BaseModel):
     name: str
     email: EmailStr
@@ -54,17 +50,28 @@ class Patient(PatientBase):
     id: int
     age: int
     status: str
-    psychologist_id: int
+    notes: Optional[str] = ""
+    psychologist_id: Optional[int] = None
     total_sessions: Optional[int] = 0
+    last_session: Optional[datetime] = None
     created_at: datetime
+ 
+    class Config:
+        from_attributes = True
+       
+class PatientUpdate(BaseModel):
+    name: Optional[str] = None
+    phone: Optional[str] = None
+    birth_date: Optional[date] = None
+    psychologist_id: Optional[int] = None
+    status: Optional[str] = None
+    notes: Optional[str] = None
  
     class Config:
         from_attributes = True
  
  
-# ==========================
-# Appointments
-# ==========================
+# Appointment schemas
 class AppointmentBase(BaseModel):
     patient_id: int
     psychologist_id: int
@@ -76,31 +83,29 @@ class AppointmentBase(BaseModel):
 class AppointmentCreate(AppointmentBase):
     pass
  
-class AppointmentUpdate(AppointmentBase):
-    date: Optional[date] = None
+class AppointmentUpdate(BaseModel):
+    date: Optional[DateType] = None
     time: Optional[str] = None
     status: Optional[AppointmentStatus] = None
     description: Optional[str] = None
-    duration: Optional[int] = 50
+    duration: Optional[int] = None
     notes: Optional[str] = None
     full_report: Optional[str] = None
+ 
  
 class Appointment(AppointmentBase):
     id: int
     status: AppointmentStatus
+    notes: str
+    full_report: str
     created_at: datetime
-    updated_at: Optional[datetime] = None
-    notes: Optional[str] = None
-    full_report: Optional[str] = None
  
     class Config:
         from_attributes = True
  
- 
-# ==========================
-# Requests
-# ==========================
+# Request schemas
 class RequestBase(BaseModel):
+    patient_id: int
     patient_name: str
     patient_email: EmailStr
     patient_phone: str
@@ -108,7 +113,7 @@ class RequestBase(BaseModel):
     description: str
     urgency: str
     preferred_dates: List[str]
-    preferred_times: List[str]   # corrigido aqui ✅
+    preferred_times: List[str]
  
 class RequestCreate(RequestBase):
     pass
@@ -127,10 +132,7 @@ class Request(RequestBase):
     class Config:
         from_attributes = True
  
- 
-# ==========================
-# Psychologists
-# ==========================
+# Psychologist schemas
 class Psychologist(BaseModel):
     id: int
     name: str
@@ -140,22 +142,17 @@ class Psychologist(BaseModel):
     class Config:
         from_attributes = True
  
- 
-# ==========================
-# Reports / Analytics
-# ==========================
+# Report schemas
 class ReportStats(BaseModel):
     active_patients: int
     total_sessions: int
     completed_sessions: int
-    attendance_rate: float
- 
-    class Config:
-        from_attributes = True
+    attendance_rate: str
+    risk_alerts: int
  
 class FrequencyData(BaseModel):
     month: str
-    sessions: int   # corrigido aqui ✅
+    sessions: int
  
 class StatusData(BaseModel):
     name: str
@@ -170,10 +167,9 @@ class RiskAlert(BaseModel):
     date: str
  
 class ReportsData(BaseModel):
-    stats: ReportStats           # ✅ agora o nome combina com o retorno
+    stats: ReportStats
     frequency_data: List[FrequencyData]
     status_data: List[StatusData]
-    patient_data: List[StatusData]
+    patients_data: List[StatusData]
     risk_alerts: List[RiskAlert]
- 
  
